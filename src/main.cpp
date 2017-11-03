@@ -35,7 +35,7 @@ CTxMemPool mempool;
 unsigned int nTransactionsUpdated = 0;
 
 map<uint256, CBlockIndex*> mapBlockIndex;
-uint256 hashGenesisBlock("0x932b4874d4f4f6d78f0be529ff5828c2975f25252eab76b885801e296fdfa0f3");
+uint256 hashGenesisBlock("0x631b70e26200e09add84e89f994025e235cab8157c9174b4eb1ab007f46d7c29");
 static CBigNum bnProofOfWorkLimit(~uint256(0) >> 20); // Altcoin: starting difficulty is 1 / 2^12
 CBlockIndex* pindexGenesisBlock = NULL;
 int nBestHeight = -1;
@@ -1093,13 +1093,13 @@ int64 static GetBlockValue(int nHeight, int64 nFees)
     int64 nSubsidy = 100 * COIN;
 
     // Subsidy is cut in half every 840000 blocks, which will occur approximately every 4 years
-    nSubsidy >>= (nHeight / 840000); // Altcoin: 840k blocks in ~4 years
+    nSubsidy >>= (nHeight / 20); // Altcoin: 840k blocks in ~4 years
 
     return nSubsidy + nFees;
 }
 
 static const int64 nTargetTimespan = 3.5 * 24 * 60 * 60; // Altcoin: 3.5 days
-static const int64 nTargetSpacing = 1 * 30; // Altcoin: 15 sec
+static const int64 nTargetSpacing = 1 * 15; // Altcoin: 15 sec
 static const int64 nInterval = nTargetTimespan / nTargetSpacing;
 
 //
