@@ -448,4 +448,13 @@ and inside  uint256("") pass new   Merkle Root hash value  which is   DEBUG.LOG 
 -remove POWCODE from main.cpp file
 
 
-15.
+15.  Create a altcoin.conf file inside /home/username/.altcoin/
+
+rpcuser=Yourusername
+rpcpassword=Yourpassword
+addnode=192.168.0.1
+
+16.Add the another node using  addnode=<ip> parameter in .conf file and start mining using following command.
+
+$cd src
+$./altcoind setgenerate true
