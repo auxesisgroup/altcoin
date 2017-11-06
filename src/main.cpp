@@ -35,7 +35,7 @@ CTxMemPool mempool;
 unsigned int nTransactionsUpdated = 0;
 
 map<uint256, CBlockIndex*> mapBlockIndex;
-uint256 hashGenesisBlock("0xcf5ad078171fba340cc254b5586a08d30b7cd0f0f8d5f8c27d0b6d5d8e7bc119");
+uint256 hashGenesisBlock("0x1abfb05d64a4b845834d272abdcaf6714076037f2222bd014b47915d76b79ecf");
 static CBigNum bnProofOfWorkLimit(~uint256(0) >> 20); // Altcoin: starting difficulty is 1 / 2^12
 CBlockIndex* pindexGenesisBlock = NULL;
 int nBestHeight = -1;
@@ -2788,7 +2788,7 @@ bool InitBlockIndex() {
         txNew.vout.resize(1);
         txNew.vin[0].scriptSig = CScript() << 486604799 << CBigNum(4) << vector<unsigned char>((const unsigned char*)pszTimestamp, (const unsigned char*)pszTimestamp + strlen(pszTimestamp));
         txNew.vout[0].nValue = 80000000 * COIN;
-        txNew.vout[0].scriptPubKey = CScript() << ParseHex("040184710fa689ad5023690c80f3a49c8f13f8d45b8c857fbcbc8bc4a8e4d3eb4b10f4d4604fa08dce601aaf0f470216fe1b51850b4acf21b179c45070ac7b03a9") << OP_CHECKSIG;
+        txNew.vout[0].scriptPubKey = CScript() << ParseHex("029894d1092a4f628b3481692a6dc3cbcc878f9a8c5bb3fafe5a38be25faa279a6") << OP_CHECKSIG;
         CBlock block;
         block.vtx.push_back(txNew);
         block.hashPrevBlock = 0;
@@ -2796,7 +2796,7 @@ bool InitBlockIndex() {
         block.nVersion = 1;
         block.nTime    = 1317972665;
         block.nBits    = 0x1e0ffff0;
-        block.nNonce   = 2085981884;
+        block.nNonce   = 2086557112;
 
         if (fTestNet)
         {
@@ -2809,7 +2809,7 @@ bool InitBlockIndex() {
         printf("block hash---------- %s\n", hash.ToString().c_str());
         printf("hashGenesisBlock---------- %s\n", hashGenesisBlock.ToString().c_str());
         printf("block.hashMerkleRoot -----------%s\n", block.hashMerkleRoot.ToString().c_str());
-        assert(block.hashMerkleRoot == uint256("0x3bf9b8f72df33b0ad2c1b9c87580841012de3aba2ab16cca8bee6ce47858048f"));
+        assert(block.hashMerkleRoot == uint256("0x2e2b5077cbc3853fb30b69f6226892ad8fe2b305956dec3400806958a154dbbd"));
 
         //
         // if (true && block.GetHash() != hashGenesisBlock)
