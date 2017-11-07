@@ -35,7 +35,7 @@ CTxMemPool mempool;
 unsigned int nTransactionsUpdated = 0;
 
 map<uint256, CBlockIndex*> mapBlockIndex;
-uint256 hashGenesisBlock("0x1abfb05d64a4b845834d272abdcaf6714076037f2222bd014b47915d76b79ecf");
+uint256 hashGenesisBlock("0xa2d1052f1c739effc0918824753a05c4191d066b09f18a057f3464ecffd0c115");
 static CBigNum bnProofOfWorkLimit(~uint256(0) >> 20); // Altcoin: starting difficulty is 1 / 2^12
 CBlockIndex* pindexGenesisBlock = NULL;
 int nBestHeight = -1;
@@ -1091,7 +1091,10 @@ uint256 static GetOrphanRoot(const CBlockHeader* pblock)
 int64 static GetBlockValue(int nHeight, int64 nFees)
 {
     int64 nSubsidy = 100 * COIN;
-
+    if(nHeight == 2)
+       {
+          nSubsidy = 2000000 * COIN;
+        }
     // Subsidy is cut in half every 840000 blocks, which will occur approximately every 4 years
     nSubsidy >>= (nHeight / 5); // Altcoin: 840k blocks in ~4 years
 
@@ -2796,7 +2799,7 @@ bool InitBlockIndex() {
         block.nVersion = 1;
         block.nTime    = 1317972665;
         block.nBits    = 0x1e0ffff0;
-        block.nNonce   = 2086557112;
+        block.nNonce   = 2088660183;
 
         if (fTestNet)
         {
@@ -2809,9 +2812,9 @@ bool InitBlockIndex() {
         printf("block hash---------- %s\n", hash.ToString().c_str());
         printf("hashGenesisBlock---------- %s\n", hashGenesisBlock.ToString().c_str());
         printf("block.hashMerkleRoot -----------%s\n", block.hashMerkleRoot.ToString().c_str());
-        assert(block.hashMerkleRoot == uint256("0x2e2b5077cbc3853fb30b69f6226892ad8fe2b305956dec3400806958a154dbbd"));
+       assert(block.hashMerkleRoot == uint256("0x2e2b5077cbc3853fb30b69f6226892ad8fe2b305956dec3400806958a154dbbd"));
 
-        //
+
         // if (true && block.GetHash() != hashGenesisBlock)
         // {
         //     printf("Searching for genesis block...\n");
@@ -2842,7 +2845,7 @@ bool InitBlockIndex() {
         //     printf("block.GetHash = %s\n", block.GetHash().ToString().c_str());
         //
         //     }
-
+        //
 
 
         block.print();
