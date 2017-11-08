@@ -14,7 +14,7 @@ comment all the checkpoints for now, later we can replace with altcoin checkpoin
 
 
 //*****************for mainnet **********************
-
+```
 static MapCheckpoints mapCheckpoints =
         boost::assign::map_list_of
 //  (  1500, uint256("0x841a2965955dd288cfa707a755d05a54e45f8bd476835ec9af4402a2b59a2967"))
@@ -64,7 +64,7 @@ static const CCheckpointData dataTestnet = {
        //576
 };
 
-
+```
 
 
 #### 6. Change the DNS seeds node in src/net.cpp file for mainnet and testnet:
@@ -75,7 +75,7 @@ The client includes a list of host names for DNS services that are seeded.
 comment all the DNS seeds nodes for now, later we can replace with altcoin DNS seeds nodes.
 
 //*********** for mainnet*************
-
+```
 
  static const char *strMainNetDNSSeed[][2] = {
     //  {"litecointools.com", "dnsseed.litecointools.com"},
@@ -96,13 +96,14 @@ comment all the DNS seeds nodes for now, later we can replace with altcoin DNS s
     // {"wemine-testnet.com", "dnsseed.wemine-testnet.com"},
     {NULL, NULL}
 };
-
+```
 
 #### 7. Change Hard Coded "Seed" Addresses in src/net.cpp (https://github.com/litecoin-project/litecoin/blob/9cffb23c2d48d47bb67df78ea1164738b41e8c9d/src/net.cpp#L1234).
 
 The client contains hard coded IP addresses that represent litecoin nodes.
 
 -comment all the Hard Coded "Seed" nodes for now, later we can replace with altcoin  seeds nodes.
+```
 unsigned int pnSeed[] =
 {
     // 0x38a9b992, 0x73d4f3a2, 0x43eda52e, 0xa1c4a2b2, 0x73c41955, 0x6992f3a2, 0x729cb992, 0x8b53b205,
@@ -181,7 +182,7 @@ unsigned int pnSeed[] =
     // 0x72da6d26, 0xed165dbc, 0xe8c83ad0, 0x9a8f37d8, 0x925adf50, 0x6b6ac162, 0x4b969e32, 0x735e1c45,
     // 0x4423ff60, 0xfa57ec6d, 0xcde2fb65, 0x11093257, 0x4748cd5b, 0x720c03dd, 0x8c7b0905, 0xba8b2e48
 };
-
+```
 
 
 #### 8. Change the name of the litecoin-qt.pro file to clonecoin-qt.pro in main folder.
@@ -190,27 +191,35 @@ unsigned int pnSeed[] =
 
 #### 9. Change block time in src/main.cpp (https://github.com/litecoin-project/litecoin/blob/9cffb23c2d48d47bb67df78ea1164738b41e8c9d/src/main.cpp#L1099) .
 
--static const int64 nTargetSpacing = 1 * 10; // 10 sec (by default its 2.5 * 60 in litcoin)
+```
+static const int64 nTargetSpacing = 1 * 10; // 10 sec (by default its 2.5 * 60 in litcoin)
+```
 
 
 #### 10. Change re-targeting  in src/main.cpp using static const int64 nTargetTimespan  parameter.
  Difficulty is a measure of how difficult it is to find a new block.
 ( https://github.com/litecoin-project/litecoin/blob/9cffb23c2d48d47bb67df78ea1164738b41e8c9d/src/main.cpp#L1098 ).
 
--static const int64 nTargetTimespan = 2.5 * 24 * 60 * 60; //2.5 days
+```
+static const int64 nTargetTimespan = 2.5 * 24 * 60 * 60; //2.5 days
+```
 
 
 #### 11. Change re-targeting  in src/main.cpp using static const int64 nTargetTimespan  parameter.
  Difficulty is a measure of how difficult it is to find a new block.
 ( https://github.com/litecoin-project/litecoin/blob/9cffb23c2d48d47bb67df78ea1164738b41e8c9d/src/main.cpp#L1098 ).
 
--static const int64 nTargetTimespan = 2.5 * 24 * 60 * 60; //2.5 days
+```
+static const int64 nTargetTimespan = 2.5 * 24 * 60 * 60; //2.5 days
+```
 
 
  #### 12. Change first letter of an address.
  (https://github.com/litecoin-project/litecoin/blob/9cffb23c2d48d47bb67df78ea1164738b41e8c9d/src/base58.h#L275)
 
+ ```
  PUBKEY_ADDRESS = 23;   //Altcoin addresses start with A.
+ ```
 
 
 #### 13.  Change halving in src/main.cpp (https://github.com/litecoin-project/litecoin/blob/9cffb23c2d48d47bb67df78ea1164738b41e8c9d/src/main.cpp#L1093).
@@ -219,7 +228,7 @@ unsigned int pnSeed[] =
 
 ///////////  GetBlockValue()///////
 
-
+```
 int64 static GetBlockValue(int nHeight, int64 nFees)
 {
     int64 nSubsidy = 50 * COIN;
@@ -228,7 +237,7 @@ int64 static GetBlockValue(int nHeight, int64 nFees)
     nSubsidy >>= (nHeight / 50);
     return nSubsidy + nFees;
 }
-
+```
 
 ///////////END  GetBlockValue()///////
 
@@ -236,7 +245,7 @@ int64 static GetBlockValue(int nHeight, int64 nFees)
 
 
 ///////////  GetBlockValue()///////
-
+```
 
 int64 static GetBlockValue(int nHeight, int64 nFees)
 {
@@ -246,7 +255,7 @@ int64 static GetBlockValue(int nHeight, int64 nFees)
     nSubsidy >>= (nHeight / 840000); // Litecoin: 840k blocks in ~4 years
     return nSubsidy + nFees;
 }
-
+```
 
 ///////////END  GetBlockValue()///////
 
@@ -255,7 +264,9 @@ int64 static GetBlockValue(int nHeight, int64 nFees)
  Coinbase (mining reward transaction) transaction outputs can only be spent after this number of new block.
 
 
+  ```
     static const int COINBASE_MATURITY = 20;
+    ```
 
 
 
@@ -271,7 +282,7 @@ GBP:  Following parameter  changes  in  InitBlockIndex() function  will help to 
 
 *********NOTE: this code will help you to generate POW for your custom genesis block ************
 POWCODE:
-
+```
 
 if (true && block.GetHash() != hashGenesisBlock)
 {
@@ -304,7 +315,7 @@ if (true && block.GetHash() != hashGenesisBlock)
 
     }
 
-  
+  ```
 //*********************END******************
 
 Steps to generate new genesis block.
@@ -323,7 +334,7 @@ Steps to generate new genesis block.
 Now the InitBlockIndex() function look like this(.src/main.cpp).
 
 ////////////////////////// InitBlockIndex()/////////////
-
+```
     bool InitBlockIndex() {
         // Check whether we're already initialized
         if (pindexGenesisBlock != NULL)
@@ -427,7 +438,7 @@ Now the InitBlockIndex() function look like this(.src/main.cpp).
         return true;
     }
 
-
+```
 ////////////////////////// END InitBlockIndex()/////////////
 
 
@@ -465,8 +476,10 @@ Go at the end of this file see the following logs .
 DEBUG.LOG :
 
 /////////////// start log ///////////////
-
+```
 2017-11-04 10:28:20 CBlock(hash=904fa8c7cc7efdce50d56015782b0c0ee80db19945023c9effa4def9a05503ae, input=01000000000000000000000000000000000000000000000000000000000000000000000040fb8c677b7eae579e4e3301db80e613538b2666ede265188bbfad2ce319a002b9aa8e4ef0ff0f1e8a35417c, PoW=000009b27c5889b83074c412d18e61585b88d5ac12210c32aa053e8fd4ae5f1c, ver=1, hashPrevBlock=0000000000000000000000000000000000000000000000000000000000000000, hashMerkleRoot=02a019e32cadbf8b1865e2ed66268b5313e680db01334e9e57ae7e7b678cfb40, nTime=1317972665, nBits=1e0ffff0, nNonce=2084648330, vtx=1)
+
+```
 
 /////////////// END log ///////////////
 
