@@ -479,11 +479,11 @@ and inside  uint256("") pass new   Merkle Root hash value  which is   DEBUG.LOG 
 
 16. Create a altcoin.conf file inside /home/username/.altcoin/
 
-rpcuser=Yourusername
-rpcpassword=Yourpassword
+rpcuser=Yourusername<br/>
+rpcpassword=Yourpassword<br/>
 addnode=192.168.0.1
 
 17. Add the another node using  addnode=<ip> parameter in .conf file and start mining using following command.
 
-$ cd src
+$ cd src <br/>
 $./altcoind setgenerate true
