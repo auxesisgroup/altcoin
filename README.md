@@ -73,6 +73,8 @@ The client includes a list of host names for DNS services that are seeded.
 comment all the DNS seeds nodes for now, later we can replace with altcoin DNS seeds nodes.
 
 //*********** for mainnet*************
+
+
  static const char *strMainNetDNSSeed[][2] = {
     //  {"litecointools.com", "dnsseed.litecointools.com"},
     //  {"litecoinpool.org", "dnsseed.litecoinpool.org"},
@@ -84,6 +86,8 @@ comment all the DNS seeds nodes for now, later we can replace with altcoin DNS s
 
 
 //*********** for testnet*************
+
+
  static const char *strTestNetDNSSeed[][2] = {
     // {"litecointools.com", "testnet-seed.litecointools.com"},
     // {"xurious.com", "testnet-seed.ltc.xurious.com"},
@@ -212,6 +216,8 @@ unsigned int pnSeed[] =
 - Change halving at every 840000 to 50 block in GetBlockValue() function at line : nSubsidy >>= (nHeight / 840000); .
 
 ///////////  GetBlockValue()///////
+
+
 int64 static GetBlockValue(int nHeight, int64 nFees)
 {
     int64 nSubsidy = 50 * COIN;
@@ -220,12 +226,16 @@ int64 static GetBlockValue(int nHeight, int64 nFees)
     nSubsidy >>= (nHeight / 50);
     return nSubsidy + nFees;
 }
+
+
 ///////////END  GetBlockValue()///////
 
 13.  Change mining reward in src/main.cpp (https://github.com/litecoin-project/litecoin/blob/9cffb23c2d48d47bb67df78ea1164738b41e8c9d/src/main.cpp#L1090) .
 
 
 ///////////  GetBlockValue()///////
+
+
 int64 static GetBlockValue(int nHeight, int64 nFees)
 {
   //  int64 nSubsidy = 50 * COIN;
@@ -234,6 +244,8 @@ int64 static GetBlockValue(int nHeight, int64 nFees)
     nSubsidy >>= (nHeight / 840000); // Litecoin: 840k blocks in ~4 years
     return nSubsidy + nFees;
 }
+
+
 ///////////END  GetBlockValue()///////
 
 14. Change coinbase maturity in .src/main.h (https://github.com/litecoin-project/litecoin/blob/9cffb23c2d48d47bb67df78ea1164738b41e8c9d/src/main.h#L58).
