@@ -1,12 +1,12 @@
 # Step to create altcoin:
 
-### 1. git clone https://github.com/litecoin-project/litecoin
-##  2. git checkout  9cffb23  //to get older version of repo
+#### 1. git clone https://github.com/litecoin-project/litecoin
+####  2. git checkout  9cffb23  //to get older version of repo
 #### 3. Replace  all instances  “Litecoin” with “Altcoin” and  “litecoin” with “altcoin” in all files.
 Replace  "const CScriptID& hash = boost::get<const CScriptID&>(address);" with "const CScriptID& hash = boost::get<CScriptID>(address);" in .src/rpcrawtransaction.cpp file.
-# 4. search  and replace all instances of “LTC” with “ALT” in all files.
-# 5. Change port and rpc port numbers for testnet and mainnet.
-# 6. Change the checkpoints in src/checkpoints.cpp file for mainnet and testnet:
+#### 4. search  and replace all instances of “LTC” with “ALT” in all files.
+#### 5. Change port and rpc port numbers for testnet and mainnet.
+#### 6. Change the checkpoints in src/checkpoints.cpp file for mainnet and testnet:
 checkpoints : An old block hash is hardcoded into litecoin software.
 Checkpoints prevent various DoS attacks from nodes flooding unusable chains and attacks involving isolating nodes and giving them fake chains,
 but it is primarily an optimization for the initial blockchain download.
@@ -67,7 +67,7 @@ static const CCheckpointData dataTestnet = {
 
 
 
-6. Change the DNS seeds node in src/net.cpp file for mainnet and testnet:
+#### 6. Change the DNS seeds node in src/net.cpp file for mainnet and testnet:
 
 Upon startup, if peer node discovery is needed, the client then issues DNS requests to learn about the addresses of other peer nodes.
 The client includes a list of host names for DNS services that are seeded.
@@ -98,7 +98,7 @@ comment all the DNS seeds nodes for now, later we can replace with altcoin DNS s
 };
 
 
-#7. Change Hard Coded "Seed" Addresses in src/net.cpp (https://github.com/litecoin-project/litecoin/blob/9cffb23c2d48d47bb67df78ea1164738b41e8c9d/src/net.cpp#L1234).
+#### 7. Change Hard Coded "Seed" Addresses in src/net.cpp (https://github.com/litecoin-project/litecoin/blob/9cffb23c2d48d47bb67df78ea1164738b41e8c9d/src/net.cpp#L1234).
 
 The client contains hard coded IP addresses that represent litecoin nodes.
 
@@ -184,36 +184,36 @@ unsigned int pnSeed[] =
 
 
 
-#8. Change the name of the litecoin-qt.pro file to clonecoin-qt.pro in main folder.
+#### 8. Change the name of the litecoin-qt.pro file to clonecoin-qt.pro in main folder.
 
 
 
-#9. Change block time in src/main.cpp (https://github.com/litecoin-project/litecoin/blob/9cffb23c2d48d47bb67df78ea1164738b41e8c9d/src/main.cpp#L1099) .
+#### 9. Change block time in src/main.cpp (https://github.com/litecoin-project/litecoin/blob/9cffb23c2d48d47bb67df78ea1164738b41e8c9d/src/main.cpp#L1099) .
 
 -static const int64 nTargetSpacing = 1 * 10; // 10 sec (by default its 2.5 * 60 in litcoin)
 
 
-#10. Change re-targeting  in src/main.cpp using static const int64 nTargetTimespan  parameter.
+#### 10. Change re-targeting  in src/main.cpp using static const int64 nTargetTimespan  parameter.
  Difficulty is a measure of how difficult it is to find a new block.
 ( https://github.com/litecoin-project/litecoin/blob/9cffb23c2d48d47bb67df78ea1164738b41e8c9d/src/main.cpp#L1098 ).
 
 -static const int64 nTargetTimespan = 2.5 * 24 * 60 * 60; //2.5 days
 
 
-#11. Change re-targeting  in src/main.cpp using static const int64 nTargetTimespan  parameter.
+#### 11. Change re-targeting  in src/main.cpp using static const int64 nTargetTimespan  parameter.
  Difficulty is a measure of how difficult it is to find a new block.
 ( https://github.com/litecoin-project/litecoin/blob/9cffb23c2d48d47bb67df78ea1164738b41e8c9d/src/main.cpp#L1098 ).
 
 -static const int64 nTargetTimespan = 2.5 * 24 * 60 * 60; //2.5 days
 
 
- #12. Change first letter of an address.
+ #### 12. Change first letter of an address.
  (https://github.com/litecoin-project/litecoin/blob/9cffb23c2d48d47bb67df78ea1164738b41e8c9d/src/base58.h#L275)
 
  PUBKEY_ADDRESS = 23;   //Altcoin addresses start with A.
 
 
-#13.  Change halving in src/main.cpp (https://github.com/litecoin-project/litecoin/blob/9cffb23c2d48d47bb67df78ea1164738b41e8c9d/src/main.cpp#L1093).
+#### 13.  Change halving in src/main.cpp (https://github.com/litecoin-project/litecoin/blob/9cffb23c2d48d47bb67df78ea1164738b41e8c9d/src/main.cpp#L1093).
 
 - Change halving at every 840000 to 50 block in GetBlockValue() function at line : nSubsidy >>= (nHeight / 840000); .
 
@@ -232,7 +232,7 @@ int64 static GetBlockValue(int nHeight, int64 nFees)
 
 ///////////END  GetBlockValue()///////
 
-#14.  Change mining reward in src/main.cpp (https://github.com/litecoin-project/litecoin/blob/9cffb23c2d48d47bb67df78ea1164738b41e8c9d/src/main.cpp#L1090) .
+#### 14.  Change mining reward in src/main.cpp (https://github.com/litecoin-project/litecoin/blob/9cffb23c2d48d47bb67df78ea1164738b41e8c9d/src/main.cpp#L1090) .
 
 
 ///////////  GetBlockValue()///////
@@ -250,7 +250,7 @@ int64 static GetBlockValue(int nHeight, int64 nFees)
 
 ///////////END  GetBlockValue()///////
 
-#15. Change coinbase maturity in .src/main.h (https://github.com/litecoin-project/litecoin/blob/9cffb23c2d48d47bb67df78ea1164738b41e8c9d/src/main.h#L58).
+#### 15. Change coinbase maturity in .src/main.h (https://github.com/litecoin-project/litecoin/blob/9cffb23c2d48d47bb67df78ea1164738b41e8c9d/src/main.h#L58).
 
  Coinbase (mining reward transaction) transaction outputs can only be spent after this number of new block.
 
@@ -259,7 +259,7 @@ int64 static GetBlockValue(int nHeight, int64 nFees)
 
 
 
-#16. Modification in genesis block according to requirements in src/main.cpp file(InitBlockIndex() function).
+#### 16. Modification in genesis block according to requirements in src/main.cpp file(InitBlockIndex() function).
 (https://github.com/litecoin-project/litecoin/blob/9cffb23c2d48d47bb67df78ea1164738b41e8c9d/src/main.cpp#L2782)
 GBP:  Following parameter  changes  in  InitBlockIndex() function  will help to create custom genesis block:
 -  const char* pszTimestamp : Any metadata that you want to store with your genesis block transaction.
@@ -476,13 +476,13 @@ and inside  uint256("") pass new   Merkle Root hash value  which is   DEBUG.LOG 
 -remove POWCODE from main.cpp file
 
 
-#16. Create a altcoin.conf file inside /home/username/.altcoin/
+#### 16. Create a altcoin.conf file inside /home/username/.altcoin/
 
 rpcuser=Yourusername<br/>
 rpcpassword=Yourpassword<br/>
 addnode=192.168.0.1
 
-17. Add the another node using  addnode=<ip> parameter in .conf file and start mining using following command.
+#### 17. Add the another node using  addnode=<ip> parameter in .conf file and start mining using following command.
 
 $ cd src <br/>
 $./altcoind setgenerate true<br/>
