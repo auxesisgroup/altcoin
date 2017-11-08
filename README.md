@@ -13,8 +13,9 @@ but it is primarily an optimization for the initial blockchain download.
 comment all the checkpoints for now, later we can replace with altcoin checkpoints.
 
 
-//*****************for mainnet **********************
+
 ```
+//*****************for mainnet **********************
 static MapCheckpoints mapCheckpoints =
         boost::assign::map_list_of
 //  (  1500, uint256("0x841a2965955dd288cfa707a755d05a54e45f8bd476835ec9af4402a2b59a2967"))
@@ -74,9 +75,9 @@ The client includes a list of host names for DNS services that are seeded.
 
 comment all the DNS seeds nodes for now, later we can replace with altcoin DNS seeds nodes.
 
-//*********** for mainnet*************
-```
 
+```
+//*********** for mainnet*************
  static const char *strMainNetDNSSeed[][2] = {
     //  {"litecointools.com", "dnsseed.litecointools.com"},
     //  {"litecoinpool.org", "dnsseed.litecoinpool.org"},
@@ -226,7 +227,7 @@ static const int64 nTargetTimespan = 2.5 * 24 * 60 * 60; //2.5 days
 
 - Change halving at every 840000 to 50 block in GetBlockValue() function at line : nSubsidy >>= (nHeight / 840000); .
 
-///////////  GetBlockValue()///////
+
 
 ```
 int64 static GetBlockValue(int nHeight, int64 nFees)
@@ -239,12 +240,12 @@ int64 static GetBlockValue(int nHeight, int64 nFees)
 }
 ```
 
-///////////END  GetBlockValue()///////
+
 
 #### 14.  Change mining reward in src/main.cpp (https://github.com/litecoin-project/litecoin/blob/9cffb23c2d48d47bb67df78ea1164738b41e8c9d/src/main.cpp#L1090) .
 
 
-///////////  GetBlockValue()///////
+
 ```
 
 int64 static GetBlockValue(int nHeight, int64 nFees)
@@ -257,7 +258,7 @@ int64 static GetBlockValue(int nHeight, int64 nFees)
 }
 ```
 
-///////////END  GetBlockValue()///////
+
 
 #### 15. Change coinbase maturity in .src/main.h (https://github.com/litecoin-project/litecoin/blob/9cffb23c2d48d47bb67df78ea1164738b41e8c9d/src/main.h#L58).
 
@@ -279,9 +280,11 @@ GBP:  Following parameter  changes  in  InitBlockIndex() function  will help to 
 - block.nTime : current timestamp.
 - block.nNonce : Nonce that should satisfy POW.
 
+## NOTE: this code will help you to generate POW for your custom genesis block
 
-*********NOTE: this code will help you to generate POW for your custom genesis block ************
 POWCODE:
+
+
 ```
 
 if (true && block.GetHash() != hashGenesisBlock)
@@ -316,7 +319,7 @@ if (true && block.GetHash() != hashGenesisBlock)
     }
 
   ```
-//*********************END******************
+
 
 Steps to generate new genesis block.
 
@@ -333,7 +336,7 @@ Steps to generate new genesis block.
 
 Now the InitBlockIndex() function look like this(.src/main.cpp).
 
-////////////////////////// InitBlockIndex()/////////////
+
 ```
     bool InitBlockIndex() {
         // Check whether we're already initialized
@@ -439,10 +442,6 @@ Now the InitBlockIndex() function look like this(.src/main.cpp).
     }
 
 ```
-////////////////////////// END InitBlockIndex()/////////////
-
-
-
 
 After this compile the code:
 
@@ -473,13 +472,12 @@ Go at the end of this file see the following logs .
 
 DEBUG.LOG :
 
-/////////////// start log ///////////////
+
 ```
 2017-11-04 10:28:20 CBlock(hash=904fa8c7cc7efdce50d56015782b0c0ee80db19945023c9effa4def9a05503ae, input=01000000000000000000000000000000000000000000000000000000000000000000000040fb8c677b7eae579e4e3301db80e613538b2666ede265188bbfad2ce319a002b9aa8e4ef0ff0f1e8a35417c, PoW=000009b27c5889b83074c412d18e61585b88d5ac12210c32aa053e8fd4ae5f1c, ver=1, hashPrevBlock=0000000000000000000000000000000000000000000000000000000000000000, hashMerkleRoot=02a019e32cadbf8b1865e2ed66268b5313e680db01334e9e57ae7e7b678cfb40, nTime=1317972665, nBits=1e0ffff0, nNonce=2084648330, vtx=1)
 
 ```
 
-/////////////// END log ///////////////
 
   Now change following parameters inside  InitBlockIndex() function in .src/main.cpp.
 
