@@ -1,3 +1,6 @@
+Step to create altcoin:
+
+
 1. git clone https://github.com/litecoin-project/litecoin
 2. git checkout  9cffb23  //to get older version of repo
 3. Replace  all instances  “Litecoin” with “Altcoin” and  “litecoin” with “altcoin” in all files.
