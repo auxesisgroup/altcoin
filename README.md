@@ -304,7 +304,7 @@ if (true && block.GetHash() != hashGenesisBlock)
 
     }
 
-    <br/>
+  
 //*********************END******************
 
 Steps to generate new genesis block.
