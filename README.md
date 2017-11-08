@@ -455,9 +455,11 @@ $./altcoind -deamon
 
 This error message will be display on console:
 
-altcoind: main.cpp:2809: bool InitBlockIndex(): Assertion `block.hashMerkleRoot == uint256("0x97ddfbbae6be97fd6cdf3e7ca13232a3afff2353e29badfab7f73011edd4ced9")' failed.
+altcoind: main.cpp:2809: bool InitBlockIndex(): Assertion block.hashMerkleRoot == uint256("0x97ddfbbae6be97fd6cdf3e7ca13232a3afff2353e29badfab7f73011edd4ced9")' failed.
 Aborted (core dumped).
-```
+
+
+
 
 Now redirect to .altcoin(inside home directory) folder and do the following (.altcoin is a local storage directory for public blockchain.)
 
