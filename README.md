@@ -265,10 +265,9 @@ int64 static GetBlockValue(int nHeight, int64 nFees)
  Coinbase (mining reward transaction) transaction outputs can only be spent after this number of new block.
 
 
-  ```
+
     static const int COINBASE_MATURITY = 20;
 
-    ```
 
 
 
