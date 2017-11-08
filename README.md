@@ -303,7 +303,9 @@ if (true && block.GetHash() != hashGenesisBlock)
     printf("block.GetHash = %s\n", block.GetHash().ToString().c_str());
 
     }
-*****************END******************
+
+    <br/>
+//*********************END******************
 
 Steps to generate new genesis block.
 
