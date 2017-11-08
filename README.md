@@ -445,11 +445,11 @@ $./altcoind -deamon<br/>
 This error message will be display on console:
 <div>
 altcoind: main.cpp:2809: bool InitBlockIndex(): Assertion `block.hashMerkleRoot == uint256("0x97ddfbbae6be97fd6cdf3e7ca13232a3afff2353e29badfab7f73011edd4ced9")' failed.
-Aborted (core dumped)
+Aborted (core dumped).<br/>
 
-</div>
+
 Now redirect to .altcoin(inside home directory) folder and do the following (.altcoin is a local storage directory for public blockchain.)
-
+<br/>
 $cd<br/>
 $cd .altcoin<br/>
 $sudo vim debug.log<br/>
@@ -469,9 +469,9 @@ DEBUG.LOG :
   Now change following parameters inside  InitBlockIndex() function in .src/main.cpp.
 
 
-- Change parameter value of block.nNonce with DEBUG.LOG  nNonce for mainnet(https://github.com/litecoin-project/litecoin/blob/9cffb23c2d48d47bb67df78ea1164738b41e8c9d/src/main.cpp#L2796).<br/>
-- Uncomment  assert(block.hashMerkleRoot == uint256("0x97ddfbbae6be97fd6cdf3e7ca13232a3afff2353e29badfab7f73011edd4ced9"));
-and inside  uint256("") pass new   Merkle Root hash value  which is   DEBUG.LOG  "hashMerkleRoot" (e.g: assert(block.hashMerkleRoot == uint256("0x02a019e32cadbf8b1865e2ed66268b5313e680db01334e9e57ae7e7b678cfb40")); )
+- Change parameter value of block.nNonce with DEBUG.LOG  nNonce for mainnet(https://github.com/litecoin-project/litecoin/blob/9cffb23c2d48d47bb67df78ea1164738b41e8c9d/src/main.cpp#L2796). <br/>
+- Uncomment assert(block.hashMerkleRoot == uint256("0x97ddfbbae6be97fd6cdf3e7ca13232a3afff2353e29badfab7f73011edd4ced9"));
+and inside  uint256("0x") pass new   Merkle Root hash value  which is   DEBUG.LOG  "hashMerkleRoot" (e.g: assert(block.hashMerkleRoot == uint256("0x02a019e32cadbf8b1865e2ed66268b5313e680db01334e9e57ae7e7b678cfb40")); )
 (https://github.com/litecoin-project/litecoin/blob/9cffb23c2d48d47bb67df78ea1164738b41e8c9d/src/main.cpp#L2809)<br/>
 - Replace  uint256 hashGenesisBlock("0x12a765e31ffd4059bada1e25190f6e98c99d9714d334efa41a195a7e7e04bfe2") tx hash value with DEBUG.LOG  "hash"  value (e.g: uint256 hashGenesisBlock("0x904fa8c7cc7efdce50d56015782b0c0ee80db19945023c9effa4def9a05503ae");) (https://github.com/litecoin-project/litecoin/blob/9cffb23c2d48d47bb67df78ea1164738b41e8c9d/src/main.cpp#L38)<br/>
 -Remove POWCODE code from main.cpp file
