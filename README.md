@@ -267,6 +267,7 @@ int64 static GetBlockValue(int nHeight, int64 nFees)
 
   ```
     static const int COINBASE_MATURITY = 20;
+
     ```
 
 
@@ -286,7 +287,6 @@ POWCODE:
 
 
 ```
-
 if (true && block.GetHash() != hashGenesisBlock)
 {
     printf("Searching for genesis block...\n");
