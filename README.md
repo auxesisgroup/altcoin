@@ -1,8 +1,8 @@
 # Step to create altcoin:
 
-## 1. git clone https://github.com/litecoin-project/litecoin
-# 2. git checkout  9cffb23  //to get older version of repo
-# 3. Replace  all instances  “Litecoin” with “Altcoin” and  “litecoin” with “altcoin” in all files.
+### 1. git clone https://github.com/litecoin-project/litecoin
+##  2. git checkout  9cffb23  //to get older version of repo
+#### 3. Replace  all instances  “Litecoin” with “Altcoin” and  “litecoin” with “altcoin” in all files.
 Replace  "const CScriptID& hash = boost::get<const CScriptID&>(address);" with "const CScriptID& hash = boost::get<CScriptID>(address);" in .src/rpcrawtransaction.cpp file.
 # 4. search  and replace all instances of “LTC” with “ALT” in all files.
 # 5. Change port and rpc port numbers for testnet and mainnet.
