@@ -446,25 +446,23 @@ Now the InitBlockIndex() function look like this(.src/main.cpp).
 
 After this compile the code:
 
-$cd src<br/>
-$make -f makefile.unix <br/>
+$cd src
+$make -f makefile.unix
 
 After the successful compilation altcoind file  get created inside .src/ folder (deamon file).
 Now run the altcoin blockchain using following command :
 
-$cd src/<br/>
-$./altcoind -deamon<br/>
+$cd src/
+$./altcoind -deamon
 
 This error message will be display on console:
 
 altcoind: main.cpp:2809: bool InitBlockIndex(): Assertion `block.hashMerkleRoot == uint256("0x97ddfbbae6be97fd6cdf3e7ca13232a3afff2353e29badfab7f73011edd4ced9")' failed.
 Aborted (core dumped).
-<br/>
-<br/>
+```
 
 Now redirect to .altcoin(inside home directory) folder and do the following (.altcoin is a local storage directory for public blockchain.)
-<br/>
-<br/>
+
 $cd<br/>
 $cd .altcoin<br/>
 $sudo vim debug.log<br/>
