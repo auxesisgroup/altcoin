@@ -186,18 +186,18 @@ unsigned int pnSeed[] =
 ```
 
 
-#### 8. Change the name of the litecoin-qt.pro file to clonecoin-qt.pro in main folder.
+#### 8. Change the name of the litecoin-qt.pro file to Altcoin-qt.pro in main folder.
 
 
 
 #### 9. Change block time in src/main.cpp (https://github.com/litecoin-project/litecoin/blob/9cffb23c2d48d47bb67df78ea1164738b41e8c9d/src/main.cpp#L1099) .
 
 ```
-static const int64 nTargetSpacing = 1 * 10; // 10 sec (by default its 2.5 * 60 in litcoin)
+static const int64 nTargetSpacing = 1 * 10;     // 10 sec (by default its 2.5 * 60 in litcoin)
 ```
 
 
-#### 10. Change re-targeting  in src/main.cpp using static const int64 nTargetTimespan  parameter.
+#### 10. Change re-targeting  in src/main.cpp.
  Difficulty is a measure of how difficult it is to find a new block.
 ( https://github.com/litecoin-project/litecoin/blob/9cffb23c2d48d47bb67df78ea1164738b41e8c9d/src/main.cpp#L1098 ).
 
@@ -265,9 +265,9 @@ int64 static GetBlockValue(int nHeight, int64 nFees)
  Coinbase (mining reward transaction) transaction outputs can only be spent after this number of new block.
 
 
-
+```
     static const int COINBASE_MATURITY = 20;
-
+```
 
 
 
@@ -494,6 +494,25 @@ and inside  uint256("0x") pass new   Merkle Root hash value  which is   DEBUG.LO
 $ cd src <br/>
 $make -f makefile.unix
 $./altcoind -deamon<br/>
+
+
+
+Now this error message will be display on console:
+
+
+Error: To use altcoind, you must set a rpcpassword in the configuration file:
+/home/harshala/.altcoin/altcoin.conf
+It is recommended you use the following random password:
+rpcuser=altcoinrpc
+rpcpassword=HbnwJiGVL4Nw8gYjtyRT84hLSFwndUFFvDBkTXJf2Njw
+(you do not need to remember this password)
+The username and password MUST NOT be the same.
+If the file does not exist, create it with owner-readable-only file permissions.
+It is also recommended to set alertnotify so you are notified of problems;
+for example: alertnotify=echo %s | mail -s "Altcoin Alert" admin@foo.com
+
+
+To fix this do the next step.
 
 
 #### 16. Create a altcoin.conf file inside /home/username/.altcoin/
