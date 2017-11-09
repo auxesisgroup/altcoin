@@ -186,7 +186,7 @@ unsigned int pnSeed[] =
 ```
 
 
-#### 8. Change the name of the litecoin-qt.pro file to Altcoin-qt.pro in main folder.
+#### 8. Change the name of the litecoin-qt.pro file to altcoin-qt.pro in main folder.
 
 
 
