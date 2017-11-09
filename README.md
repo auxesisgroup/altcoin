@@ -205,17 +205,7 @@ static const int64 nTargetSpacing = 1 * 10;     // 10 sec (by default its 2.5 * 
 static const int64 nTargetTimespan = 2.5 * 24 * 60 * 60; //2.5 days
 ```
 
-
-#### 11. Change re-targeting  in src/main.cpp using static const int64 nTargetTimespan  parameter.
- Difficulty is a measure of how difficult it is to find a new block.
-( https://github.com/litecoin-project/litecoin/blob/9cffb23c2d48d47bb67df78ea1164738b41e8c9d/src/main.cpp#L1098 ).
-
-```
-static const int64 nTargetTimespan = 2.5 * 24 * 60 * 60; //2.5 days
-```
-
-
- #### 12. Change first letter of an address.
+ #### 11. Change first letter of an address.
  (https://github.com/litecoin-project/litecoin/blob/9cffb23c2d48d47bb67df78ea1164738b41e8c9d/src/base58.h#L275)
 
  ```
@@ -223,7 +213,7 @@ static const int64 nTargetTimespan = 2.5 * 24 * 60 * 60; //2.5 days
  ```
 
 
-#### 13.  Change halving in src/main.cpp (https://github.com/litecoin-project/litecoin/blob/9cffb23c2d48d47bb67df78ea1164738b41e8c9d/src/main.cpp#L1093).
+#### 12.  Change halving in src/main.cpp (https://github.com/litecoin-project/litecoin/blob/9cffb23c2d48d47bb67df78ea1164738b41e8c9d/src/main.cpp#L1093).
 
 - Change halving at every 840000 to 50 block in GetBlockValue() function at line : nSubsidy >>= (nHeight / 840000); .
 
@@ -242,7 +232,7 @@ int64 static GetBlockValue(int nHeight, int64 nFees)
 
 
 
-#### 14.  Change mining reward in src/main.cpp (https://github.com/litecoin-project/litecoin/blob/9cffb23c2d48d47bb67df78ea1164738b41e8c9d/src/main.cpp#L1090) .
+#### 13.  Change mining reward in src/main.cpp (https://github.com/litecoin-project/litecoin/blob/9cffb23c2d48d47bb67df78ea1164738b41e8c9d/src/main.cpp#L1090) .
 
 
 
@@ -260,7 +250,7 @@ int64 static GetBlockValue(int nHeight, int64 nFees)
 
 
 
-#### 15. Change coinbase maturity in .src/main.h (https://github.com/litecoin-project/litecoin/blob/9cffb23c2d48d47bb67df78ea1164738b41e8c9d/src/main.h#L58).
+#### 14. Change coinbase maturity in .src/main.h (https://github.com/litecoin-project/litecoin/blob/9cffb23c2d48d47bb67df78ea1164738b41e8c9d/src/main.h#L58).
 
  Coinbase (mining reward transaction) transaction outputs can only be spent after this number of new block.
 
@@ -271,7 +261,7 @@ int64 static GetBlockValue(int nHeight, int64 nFees)
 
 
 
-#### 16. Modification in genesis block according to requirements in src/main.cpp file(InitBlockIndex() function).
+#### 15. Modification in genesis block according to requirements in src/main.cpp file(InitBlockIndex() function).
 (https://github.com/litecoin-project/litecoin/blob/9cffb23c2d48d47bb67df78ea1164738b41e8c9d/src/main.cpp#L2782)
 GBP:  Following parameter  changes  in  InitBlockIndex() function  will help to create custom genesis block:
 -  const char* pszTimestamp : Any metadata that you want to store with your genesis block transaction.
@@ -515,13 +505,13 @@ for example: alertnotify=echo %s | mail -s "Altcoin Alert" admin@foo.com
 To fix this do the next step.
 
 
-#### 16. Create a altcoin.conf file inside /home/username/.altcoin/
+#### 15. Create a altcoin.conf file inside /home/username/.altcoin/
 
 rpcuser=Yourusername<br/>
 rpcpassword=Yourpassword<br/>
 addnode=192.168.0.1
 
-#### 17. Add the another node using  addnode=<ip> parameter in .conf file and start mining using following command.
+#### 16. Add the another node using  addnode=<ip> parameter in .conf file and start mining using following command.
 
 $ cd src <br/>
 $./altcoind setgenerate true<br/>
