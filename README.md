@@ -1,10 +1,10 @@
 # Step to create altcoin:
 
-#### 1. git clone https://github.com/litecoin-project/litecoin
-####  2. git checkout  9cffb23  //to get older version of repo
+#### 1. `git clone https://github.com/litecoin-project/litecoin`
+####  2. `git checkout  9cffb23`  //to get older version of repo
 #### 3. Replace  all instances  “Litecoin” with “Altcoin” and  “litecoin” with “altcoin” in all files.
-Replace  "const CScriptID& hash = boost::get<const CScriptID&>(address);" with "const CScriptID& hash = boost::get<CScriptID>(address);" in .src/rpcrawtransaction.cpp file.
-#### 4. search  and replace all instances of “LTC” with “ALT” in all files.
+Replace  `const CScriptID& hash = boost::get<const CScriptID&>(address);` with `const CScriptID& hash = boost::get<CScriptID>(address);` in `src/rpcrawtransaction.cpp` file.
+#### 4. Search  and replace all instances of “LTC” with “ALT” in all files.
 #### 5. Change port and rpc port numbers for testnet and mainnet.
 #### 6. Change the checkpoints in src/checkpoints.cpp file for mainnet and testnet:
 checkpoints : An old block hash is hardcoded into litecoin software.
@@ -99,7 +99,7 @@ comment all the DNS seeds nodes for now, later we can replace with altcoin DNS s
 };
 ```
 
-#### 7. Change Hard Coded "Seed" Addresses in src/net.cpp (https://github.com/litecoin-project/litecoin/blob/9cffb23c2d48d47bb67df78ea1164738b41e8c9d/src/net.cpp#L1234).
+#### 7. Change Hard Coded "Seed" Addresses in [src/net.cpp](https://github.com/litecoin-project/litecoin/blob/9cffb23c2d48d47bb67df78ea1164738b41e8c9d/src/net.cpp#L1234).
 
 The client contains hard coded IP addresses that represent litecoin nodes.
 
@@ -190,30 +190,28 @@ unsigned int pnSeed[] =
 
 
 
-#### 9. Change block time in src/main.cpp (https://github.com/litecoin-project/litecoin/blob/9cffb23c2d48d47bb67df78ea1164738b41e8c9d/src/main.cpp#L1099) .
+#### 9. Change block time in [src/main.cpp](https://github.com/litecoin-project/litecoin/blob/9cffb23c2d48d47bb67df78ea1164738b41e8c9d/src/main.cpp#L1099)
 
 ```
 static const int64 nTargetSpacing = 1 * 10;     // 10 sec (by default its 2.5 * 60 in litcoin)
 ```
 
 
-#### 10. Change re-targeting  in src/main.cpp.
+#### 10. Change re-targeting  in [src/main.cpp](https://github.com/litecoin-project/litecoin/blob/9cffb23c2d48d47bb67df78ea1164738b41e8c9d/src/main.cpp#L1098)
  Difficulty is a measure of how difficult it is to find a new block.
-( https://github.com/litecoin-project/litecoin/blob/9cffb23c2d48d47bb67df78ea1164738b41e8c9d/src/main.cpp#L1098 ).
 
 ```
 static const int64 nTargetTimespan = 2.5 * 24 * 60 * 60; //2.5 days
 ```
 
- #### 11. Change first letter of an address.
- (https://github.com/litecoin-project/litecoin/blob/9cffb23c2d48d47bb67df78ea1164738b41e8c9d/src/base58.h#L275)
+ #### 11. Change first letter of an address in [src/base58.h](https://github.com/litecoin-project/litecoin/blob/9cffb23c2d48d47bb67df78ea1164738b41e8c9d/src/base58.h#L275)
 
  ```
  PUBKEY_ADDRESS = 23;   //Altcoin addresses start with A.
  ```
 
 
-#### 12.  Change halving in src/main.cpp (https://github.com/litecoin-project/litecoin/blob/9cffb23c2d48d47bb67df78ea1164738b41e8c9d/src/main.cpp#L1093).
+#### 12.  Change halving in [src/main.cpp](https://github.com/litecoin-project/litecoin/blob/9cffb23c2d48d47bb67df78ea1164738b41e8c9d/src/main.cpp#L1093).
 
 - Change halving at every 840000 to 50 block in GetBlockValue() function at line : nSubsidy >>= (nHeight / 840000); .
 
@@ -232,7 +230,7 @@ int64 static GetBlockValue(int nHeight, int64 nFees)
 
 
 
-#### 13.  Change mining reward in src/main.cpp (https://github.com/litecoin-project/litecoin/blob/9cffb23c2d48d47bb67df78ea1164738b41e8c9d/src/main.cpp#L1090) .
+#### 13.  Change mining reward in [src/main.cpp](https://github.com/litecoin-project/litecoin/blob/9cffb23c2d48d47bb67df78ea1164738b41e8c9d/src/main.cpp#L1090) .
 
 
 
@@ -250,7 +248,7 @@ int64 static GetBlockValue(int nHeight, int64 nFees)
 
 
 
-#### 14. Change coinbase maturity in .src/main.h (https://github.com/litecoin-project/litecoin/blob/9cffb23c2d48d47bb67df78ea1164738b41e8c9d/src/main.h#L58).
+#### 14. Change coinbase maturity in [src/main.h](https://github.com/litecoin-project/litecoin/blob/9cffb23c2d48d47bb67df78ea1164738b41e8c9d/src/main.h#L58).
 
  Coinbase (mining reward transaction) transaction outputs can only be spent after this number of new block.
 
@@ -261,8 +259,7 @@ int64 static GetBlockValue(int nHeight, int64 nFees)
 
 
 
-#### 15. Modification in genesis block according to requirements in src/main.cpp file(InitBlockIndex() function).
-(https://github.com/litecoin-project/litecoin/blob/9cffb23c2d48d47bb67df78ea1164738b41e8c9d/src/main.cpp#L2782)
+#### 15. Modification in genesis block according to requirements in [src/main.cpp](https://github.com/litecoin-project/litecoin/blob/9cffb23c2d48d47bb67df78ea1164738b41e8c9d/src/main.cpp#L2782) file(InitBlockIndex() function).
 GBP:  Following parameter  changes  in  InitBlockIndex() function  will help to create custom genesis block:
 -  const char* pszTimestamp : Any metadata that you want to store with your genesis block transaction.
 - txNew.vout[0].nValue : Genesis block reward.( 50 * COIN by default)
@@ -323,7 +320,7 @@ Steps to generate new genesis block.
 
 
 
-Now the InitBlockIndex() function look like this(.src/main.cpp).
+Now the InitBlockIndex() function look like this(src/main.cpp).
 
 
 ```
@@ -433,30 +430,30 @@ Now the InitBlockIndex() function look like this(.src/main.cpp).
 ```
 
 After this compile the code:
-
+```
 $cd src
 $make -f makefile.unix
+```
 
-After the successful compilation altcoind file  get created inside .src/ folder (deamon file).
+After the successful compilation altcoind file  get created inside ./src folder (daemon file).
 Now run the altcoin blockchain using following command :
-
-$cd src/
-$./altcoind -deamon
-
+```
+$cd src
+$./altcoind -daemon
+```
 This error message will be display on console:
-
+```
 altcoind: main.cpp:2809: bool InitBlockIndex(): Assertion block.hashMerkleRoot == uint256("0x97ddfbbae6be97fd6cdf3e7ca13232a3afff2353e29badfab7f73011edd4ced9")' failed.
 Aborted (core dumped).
-
-
+```
 
 
 Now redirect to .altcoin(inside home directory) folder and do the following (.altcoin is a local storage directory for public blockchain.)
-
-$cd<br/>
-$cd .altcoin<br/>
-$sudo vim debug.log<br/>
-
+```
+$cd
+$cd .altcoin
+$sudo vim debug.log
+```
 
 Go at the end of this file see the following logs .
 
@@ -470,7 +467,7 @@ DEBUG.LOG :
 ```
 
 
-  Now change following parameters inside  InitBlockIndex() function in .src/main.cpp.
+  Now change following parameters inside  InitBlockIndex() function in src/main.cpp.
 
 
 - Change parameter value of block.nNonce with DEBUG.LOG  nNonce for mainnet(https://github.com/litecoin-project/litecoin/blob/9cffb23c2d48d47bb67df78ea1164738b41e8c9d/src/main.cpp#L2796). <br/>
@@ -480,18 +477,18 @@ and inside  uint256("0x") pass new   Merkle Root hash value  which is   DEBUG.LO
 - Replace  uint256 hashGenesisBlock("0x12a765e31ffd4059bada1e25190f6e98c99d9714d334efa41a195a7e7e04bfe2") tx hash value with DEBUG.LOG  "hash"  value (e.g: uint256 hashGenesisBlock("0x904fa8c7cc7efdce50d56015782b0c0ee80db19945023c9effa4def9a05503ae");) (https://github.com/litecoin-project/litecoin/blob/9cffb23c2d48d47bb67df78ea1164738b41e8c9d/src/main.cpp#L38)<br/>
 -Remove POWCODE code from main.cpp file
 -Recompile file using following commands.
-
-$ cd src <br/>
+```
+$cd src 
 $make -f makefile.unix
-$./altcoind -deamon<br/>
-
+$./altcoind -daemon
+```
 
 
 Now this error message will be display on console:
 
-
+```
 Error: To use altcoind, you must set a rpcpassword in the configuration file:
-/home/harshala/.altcoin/altcoin.conf
+/home/username/.altcoin/altcoin.conf
 It is recommended you use the following random password:
 rpcuser=altcoinrpc
 rpcpassword=HbnwJiGVL4Nw8gYjtyRT84hLSFwndUFFvDBkTXJf2Njw
@@ -500,18 +497,25 @@ The username and password MUST NOT be the same.
 If the file does not exist, create it with owner-readable-only file permissions.
 It is also recommended to set alertnotify so you are notified of problems;
 for example: alertnotify=echo %s | mail -s "Altcoin Alert" admin@foo.com
-
+```
 
 To fix this do the next step.
 
 
-#### 15. Create a altcoin.conf file inside /home/username/.altcoin/
-
-rpcuser=Yourusername<br/>
-rpcpassword=Yourpassword<br/>
+#### 16. Create a altcoin.conf file inside /home/username/.altcoin/
+```
+rpcuser=Yourusername
+rpcpassword=Yourpassword
 addnode=192.168.0.1
+```
 
-#### 16. Add the another node using  addnode=<ip> parameter in .conf file and start mining using following command.
+#### 17. To enable JSON-RPC commands, add `server = 1` in .conf file
 
-$ cd src <br/>
-$./altcoind setgenerate true<br/>
+#### 18. To run the test network, add `testnet = 1` in .conf file
+
+#### 19. Add the another node using  `addnode=<ip>` in .conf file 
+
+#### 20. Start mining using following command after starting daemon.
+```
+$./altcoind setgenerate true
+```
